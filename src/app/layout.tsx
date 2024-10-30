@@ -1,25 +1,31 @@
+import { ThemeProvider } from "@/components/theme-provider";
 import "@/styles/globals.css";
+import { Inter } from "next/font/google";
 
-import { GeistSans } from "geist/font/sans";
-import { type Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Next.js 15 Starter",
-  description:
-    "Starter template for Next.js 15 with React 19 RC, TypeScript, Tailwind CSS and Shadcn.",
-  icons: [{ rel: "icon", url: "/favicon.ico" }],
-};
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html
-      lang="en"
-      className={`${GeistSans.variable} dark`}
-      style={{ colorScheme: "dark" }}
-    >
-      <body>{children}</body>
+    <html lang="en" suppressHydrationWarning className={inter.variable}>
+      <body className="min-h-screen bg-background font-sans antialiased transition-colors duration-300">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange={false}
+          storageKey="property-pro-theme"
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
