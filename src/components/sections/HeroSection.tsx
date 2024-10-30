@@ -1,18 +1,30 @@
+"use client";
+
 import { Button } from "@/components/ui/button";
+import { IMAGES } from "@/lib/constants";
 import { TrendingUp, Upload } from "lucide-react";
 import Image from "next/image";
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden">
+    <section className="relative min-h-[calc(100vh-4rem)] overflow-hidden bg-gray-900">
       {/* Background Image with Gradient Overlay */}
       <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-gray-900" />
         <Image
-          src="/properties/property-1.jpg"
+          src={IMAGES.HERO}
           alt="Modern Luxury Home"
           fill
-          className="object-cover"
+          sizes="100vw"
           priority
+          quality={90}
+          className="object-cover transition-opacity duration-500"
+          loading="eager"
+          fetchPriority="high"
+          style={{ opacity: 0 }}
+          onLoadingComplete={(image) => {
+            image.style.opacity = "1";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30 dark:from-black/90 dark:via-black/75 dark:to-black/60" />
       </div>

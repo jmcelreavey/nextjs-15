@@ -8,6 +8,30 @@ import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { SectionProgress } from "@/components/ui/section-progress";
+import { IMAGES } from "@/lib/constants";
+import { Metadata } from "next";
+
+// Add preload hint for the hero image
+export const viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "white" },
+    { media: "(prefers-color-scheme: dark)", color: "black" },
+  ],
+};
+
+export async function generateMetadata(): Promise<Metadata> {
+  return {
+    title: "PropertyPro - List Your Property",
+    description: "Find the perfect buyer for your property with PropertyPro",
+    openGraph: {
+      images: [IMAGES.HERO],
+    },
+    twitter: {
+      card: "summary_large_image",
+      images: [IMAGES.HERO],
+    },
+  };
+}
 
 export default function LandingPage() {
   return (
