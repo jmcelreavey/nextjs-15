@@ -43,7 +43,10 @@ export default function HomePage() {
           </p>
         </div>
         <Button asChild variant={"outline"} className="mx-auto">
-          <a href="https://nextjs.org/blog/next-15">
+          <a
+            href="https://github.com/Ali-Hussein-dev/nextjs-15.git"
+            target="_blank"
+          >
             <SiGithub /> Fork it
           </a>
         </Button>
